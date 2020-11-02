@@ -33,9 +33,11 @@
                 <p class="title">Cars.com</p>
             </div>
         </header>
-        <article style="padding:10px;" class="has-background-white">
-            <div class="columns">
-                <section class="column is-one-third has-background-info" id="search">
+
+        <!--Main body-->
+        <article class="has-background-white">
+            <div class="columns" style="padding:10px;">
+                <section class="column is-one-third has-background-info is-fullheight" id="search">
                     <!--Search-->
                     <form action="">
                         <table>
@@ -71,6 +73,14 @@
                                     <input type="number" id="maxPrice" class="input is-small">
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <input type="submit" value="Search" class="button">
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
                         </table>
                     </form>
                 </section>
@@ -86,8 +96,9 @@
 
             </div>
         </article>
-        <footer class="has-background-light">
+        <footer class="has-background-light" style="bottom:0;position:fixed;width:100%;">
             <p>Test3</p>
+            <br/>
             <!--Ts and Cs-->
         </footer>
     </body>
