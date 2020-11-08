@@ -1,7 +1,5 @@
 let url = new URL(window.location.href);
 
-//TODO: get from page parameters
-//TODO: get car image automatically without passing it through GET
 this.carIndex = url.searchParams("carIndex");//sessionStorage.getItem("carImage");
 
 let xhttp = new XMLHttpRequest();

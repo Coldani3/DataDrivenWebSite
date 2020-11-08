@@ -5,7 +5,7 @@ function DisplayedCar()
         data()
         {
             return {
-
+                carPageLink: ""
             };
         },
         template: `
@@ -23,7 +23,7 @@ function DisplayedCar()
             </a>
         `,
         props: {
-            carPageLink: String,
+            carIndex: Number,
             carImage: String,
             model: String,
             make: String,
@@ -32,6 +32,9 @@ function DisplayedCar()
             colour: String,
             telephone: String,
             dealer: String,
+        },
+        mounted() {
+            this.carPageLink = "carpage.html?carIndex=" + this.carIndex;
         },
         methods: {
             updateSession()
