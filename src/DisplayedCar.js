@@ -1,7 +1,7 @@
 function DisplayedCar()
 {
     return {
-        el: "",
+        el: "#displayedCar",
         data()
         {
             return {
@@ -9,7 +9,7 @@ function DisplayedCar()
             };
         },
         template: `
-            <a v-bind:href="carPageLink">
+            <a class="displayedCar" v-bind:href="carPageLink">
                 <div class="box">
                     <img v-bind:src="carImage" id="image" alt="Car" style="float:left;">
                     <p id="model">Model: {{ model }}</p>
