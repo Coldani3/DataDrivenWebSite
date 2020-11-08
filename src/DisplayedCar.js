@@ -9,7 +9,7 @@ function DisplayedCar()
             };
         },
         template: `
-            <a class="displayedCar" v-bind:href="carPageLink">
+            <a class="displayedCar" onclick="updateSession()" v-bind:href="carPageLink">
                 <div class="box">
                     <img v-bind:src="carImage" id="image" alt="Car" style="float:left;">
                     <p id="model">Model: {{ model }}</p>
@@ -32,6 +32,12 @@ function DisplayedCar()
             colour: String,
             telephone: String,
             dealer: String,
+        },
+        methods: {
+            updateSession()
+            {
+                
+            }
         }
     }
 }
