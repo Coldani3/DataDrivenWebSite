@@ -25,6 +25,11 @@ $query = $pdo->query("SELECT * FROM cars WHERE carIndex = ".$_GET["carIndex"]);
 $row = $query.fetch();
 
 echo "<img href='".$row["image"]."' alt='Car'>";
+echo "<p>Description</p>";
+//extra details
+echo "<div class='box'>"
+
+echo "</div>"
 
 echo "<div><button class='button' id='purchaseButton'>Purchase</button></div>"
 
