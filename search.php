@@ -53,8 +53,8 @@ while ($row = $query->fetch())
     echo "<div>";
     echo "<a class='displayedCar' onclick='updateSession()' href='carpage.html?carIndex=".$row["carIndex"]."'>";
     echo "<div class='box' style='background-color:lightgrey;margin-bottom:10px;'><img src='".$row["image"]."' id='image' alt='Car'>";
-    echo "<p id='model'>Model: ".$row["model"]."</p>";
     echo "<p id='make'>Make: ".$row["make"]."</p>";
+    echo "<p id='model'>Model: ".$row["model"]."</p>";
     echo "<p id='price'>Price: £".$row["price"]."</p>";
     echo "<p id='reg'>Registration: ".$row["Reg"]."</p>";
     echo "<p id='colour'>Colour: ".$row["colour"]."</p>";
@@ -77,6 +77,10 @@ for ($i = clamp($page - 3, 0, $pageCount); $i < clamp($page + 3, 0, $pageCount);
     if ($i != $page)
     {
         echo "[<a onclick='setPageCount(".$i.")'>".($i + 1)."</a>]";
+    }
+    else
+    {
+        echo "[<strong>".($i + 1)."</strong>]";
     }
 }
 

@@ -1,0 +1,15 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: none;
+    padding: 0;
+    margin: 0;
+}
+
+.fullHeight {
+    height: 100%;
+}
+
+.fullWidth {
+    width: 100%;
+}

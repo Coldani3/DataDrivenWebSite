@@ -1,6 +1,12 @@
 //Updated on Paginate
 var pageCount = 0;
 
+function search()
+{
+    pageCount = 0;
+    submit();
+}
+
 function submit()
 {
     let xhttp = new XMLHttpRequest();
