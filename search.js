@@ -50,3 +50,9 @@ function getGETToSend()
 
     return url;
 }
+
+function setPageCount(page)
+{
+    pageCount = page;
+    submit();
+}

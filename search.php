@@ -1,4 +1,10 @@
 <?php
+
+function clamp($val, $min, $max)
+{
+	return $val < $min ? $min : ($val > $max ? $max : $val);
+}
+
 $host = 'localhost';
 $db   = 'carsdatabase';
 $user = 'root';
@@ -29,25 +35,28 @@ else $model = "\"".$_GET['model']."\"";
 if (!isset($_GET['minPrice']) || $_GET['minPrice'] == "") $minPrice = 0;
 else $minPrice = $_GET['minPrice'];
 
-if (!isset($_GET['maxPrice']) || $_GET['maxPrice'] == "") $maxPrice = 9999999999;
+if (!isset($_GET['maxPrice']) || $_GET['maxPrice'] == "") $maxPrice = 9999999;
 else $maxPrice = $_GET['maxPrice'];
 
+$page = $_GET["page"];
 $pageSize = 10;
-$offset = $pageSize * $_GET["page"];
+$offset = $pageSize * $page;
 //NOTE: When displaying to pagination, show page + 1
 
-$queryText = "SELECT * FROM cars WHERE make = $make AND model = $model AND price >= $minPrice AND price <= $maxPrice LIMIT $offset, $pageSize";
+$queryText = "SELECT * FROM cars WHERE make LIKE $make AND model LIKE $model AND price >= $minPrice AND price <= $maxPrice LIMIT $offset, $pageSize";
+//$queryText = "SELECT * FROM cars LIMIT 0, 10";
 $query = $pdo->query($queryText);
 
+echo "<div style='position:relative;overflow-y:auto;'>";
 while ($row = $query->fetch())
 {
-    echo "<div style='overflow-y:auto;'>";
+    echo "<div>";
     echo "<a class='displayedCar' onclick='updateSession()' href='carpage.html?carIndex=".$row["carIndex"]."'>";
-    echo "<div class='box'><img src='".$row["image"]."' id='image' alt='Car' style='float:left;'>";
+    echo "<div class='box' style='background-color:lightgrey;margin-bottom:10px;'><img src='".$row["image"]."' id='image' alt='Car'>";
     echo "<p id='model'>Model: ".$row["model"]."</p>";
     echo "<p id='make'>Make: ".$row["make"]."</p>";
-    echo "<p id='price'>Price: ".$row["price"]."</p>";
-    echo "<p id='reg'>Registration: ".$row["reg"]."</p>";
+    echo "<p id='price'>Price: £".$row["price"]."</p>";
+    echo "<p id='reg'>Registration: ".$row["Reg"]."</p>";
     echo "<p id='colour'>Colour: ".$row["colour"]."</p>";
     echo "<p id='telephone'>Telephone: ".$row["telephone"]."</p>";
     echo "<p id='dealer'>Dealer: ".$row["dealer"]."</p>";
@@ -55,8 +64,21 @@ while ($row = $query->fetch())
     echo "</a>";
     echo "</div>";
 }
+echo "</div>";
 
 //GENERATE PAGINATION
 
-$pageCount = $pdo->query(str_replace("*", "COUNT(*)", $queryText))->fetchColumn();
+$pageCount = ceil($pdo->query("SELECT COUNT(*) FROM cars WHERE make LIKE $make AND model LIKE $model AND price >= $minPrice AND price <= $maxPrice")->fetchColumn() / $pageSize);
+echo "<div id='pagination' style='bottom:0;background-color:lightgrey;text-align:center;'>";
+echo "<p>Page ".($page + 1)." of ".$pageCount."</p>";
+
+for ($i = clamp($page - 3, 0, $pageCount); $i < clamp($page + 3, 0, $pageCount); $i++)
+{
+    if ($i != $page)
+    {
+        echo "[<a onclick='setPageCount(".$i.")'>".($i + 1)."</a>]";
+    }
+}
+
+echo "</div>";
 ?>
