@@ -1,3 +1,6 @@
+//Updated on Paginate
+var pageCount = 0;
+
 function submit()
 {
     let xhttp = new XMLHttpRequest();
@@ -36,17 +39,14 @@ function getGETToSend()
 
     if (maxPriceInput.length > 0)
     {
-        url += "maxPrice=" + minPriceInput;
+        url += "maxPrice=" + minPriceInput + "&";
     }
     else if (url.indexOf(url.length - 1) == "&")
     {
         url = url.substring(0, url.length - 2);
     }
 
-    if (url === "?")
-    {
-        return "";
-    }
+    url += "page=" + pageCount;
 
     return url;
 }

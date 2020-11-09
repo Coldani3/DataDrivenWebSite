@@ -32,13 +32,17 @@ else $minPrice = $_POST['minPrice'];
 if (!isset($_POST['maxPrice']) || $_POST['maxPrice'] == "") $maxPrice = 9999999999;
 else $maxPrice = $_POST['maxPrice'];
 
-$query = $pdo->query("SELECT * FROM cars WHERE make = $make AND model = $model AND price >= $minPrice AND price <= $maxPrice");
+$pageSize = 10;
+$offset = $pageSize * $_GET["page"];
+//NOTE: When displaying to pagination, show page + 1
+
+$query = $pdo->query("SELECT * FROM cars WHERE make = $make AND model = $model AND price >= $minPrice AND price <= $maxPrice LIMIT $offset, $pageSize");
 
 while ($row = $query->fetch())
 {
-    //echo "<DisplayedCar car-index=".$row["carIndex"]." car-image='".$row["image"]."' model='".$row["model"]."' make='".$row["make"]."' price=".$row["price"]." reg='".$row["reg"]."' colour='".$row["colour"]."' telephone='".$row["telephone"]."' dealer='".$row["dealer"]."' />";
+    echo "<div style='overflow-y:auto;'>";
     echo "<a class='displayedCar' onclick='updateSession()' href='carpage.html?carIndex=".$row["carIndex"]."'>";
-    echo "<div class='box'><img src='".$row["image"]."' id='image' alt='Car' style='float:left;''>";
+    echo "<div class='box'><img src='".$row["image"]."' id='image' alt='Car' style='float:left;'>";
     echo "<p id='model'>Model: ".$row["model"]."</p>";
     echo "<p id='make'>Make: ".$row["make"]."</p>";
     echo "<p id='price'>Price: ".$row["price"]."</p>";
@@ -48,5 +52,8 @@ while ($row = $query->fetch())
     echo "<p id='dealer'>Dealer: ".$row["dealer"]."</p>";
     echo "</div>";
     echo "</a>";
+    echo "</div>";
 }
+
+//GENERATE PAGINATION
 ?>
