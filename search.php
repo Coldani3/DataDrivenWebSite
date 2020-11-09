@@ -20,23 +20,24 @@ catch (\PDOException $e)
 	throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-if (!isset($_POST['make']) || $_POST['make'] == "") $make = "\"%\"";
-else $make = "\"".$_POST['make']."\"";
+if (!isset($_GET['make']) || $_GET['make'] == "") $make = "\"%\"";
+else $make = "\"".$_GET['make']."\"";
 
-if (!isset($_POST['model']) || $_POST['model'] == "") $model = "\"%\"";
-else $model = "\"".$_POST['model']."\"";
+if (!isset($_GET['model']) || $_GET['model'] == "") $model = "\"%\"";
+else $model = "\"".$_GET['model']."\"";
 
-if (!isset($_POST['minPrice']) || $_POST['minPrice'] == "") $minPrice = 0;
-else $minPrice = $_POST['minPrice'];
+if (!isset($_GET['minPrice']) || $_GET['minPrice'] == "") $minPrice = 0;
+else $minPrice = $_GET['minPrice'];
 
-if (!isset($_POST['maxPrice']) || $_POST['maxPrice'] == "") $maxPrice = 9999999999;
-else $maxPrice = $_POST['maxPrice'];
+if (!isset($_GET['maxPrice']) || $_GET['maxPrice'] == "") $maxPrice = 9999999999;
+else $maxPrice = $_GET['maxPrice'];
 
 $pageSize = 10;
 $offset = $pageSize * $_GET["page"];
 //NOTE: When displaying to pagination, show page + 1
 
-$query = $pdo->query("SELECT * FROM cars WHERE make = $make AND model = $model AND price >= $minPrice AND price <= $maxPrice LIMIT $offset, $pageSize");
+$queryText = "SELECT * FROM cars WHERE make = $make AND model = $model AND price >= $minPrice AND price <= $maxPrice LIMIT $offset, $pageSize";
+$query = $pdo->query($queryText);
 
 while ($row = $query->fetch())
 {
@@ -56,4 +57,6 @@ while ($row = $query->fetch())
 }
 
 //GENERATE PAGINATION
+
+$pageCount = $pdo->query(str_replace("*", "COUNT(*)", $queryText))->fetchColumn();
 ?>

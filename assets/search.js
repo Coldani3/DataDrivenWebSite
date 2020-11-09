@@ -10,6 +10,7 @@ function submit()
             document.getElementById("carSelect").innerHTML = this.responseText;
         }
     }
+    console.log("test");
     xhttp.open("GET", "search.php" + getGETToSend(), true);
     xhttp.send();
 }
