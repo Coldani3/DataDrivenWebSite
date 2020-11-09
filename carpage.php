@@ -20,13 +20,13 @@ catch (\PDOException $e)
 	throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$query = $pdo->query("SELECT * FROM cars WHERE carIndex = ".$_GET["carIndex"]);
+$query = $pdo->query("SELECT * FROM cars WHERE carIndex LIKE ".$_GET["carIndex"]);
 
-$row = $query.fetch();
+$row = $query->fetch();
 
 echo "<img href='".$row["image"]."' alt='Car'>";
-echo "<p>Description</p>";
-echo "<p>".$row["description"]."</p>";
+echo "<p>Description: ".$row["description"]."</p>";
+echo "<p>Price: £".$row["price"]."</p>";
 //extra details
 echo "<div class='box'>";
 

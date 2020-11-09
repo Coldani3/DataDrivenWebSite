@@ -1,6 +1,6 @@
 let url = new URL(window.location.href);
 
-this.carIndex = url.searchParams("carIndex");//sessionStorage.getItem("carImage");
+this.carIndex = url.searchParams.get("carIndex");//sessionStorage.getItem("carImage");
 
 let xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {

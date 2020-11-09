@@ -6,11 +6,12 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
         <link rel="stylesheet" href="fullheightpage.css">
         <!-- <link rel="stylesheet" href="search.css"> -->
-        <!-- <link rel="stylesheet" href="colours.css"> -->
+        <link rel="stylesheet" href="colours.css">
+        <link rel="stylesheet" href="search.css">
         <title>Search</title>
     </head>
     <body>
-        <header class="hero has-background-primary">
+        <header class="hero" style="background-color: black;">
             <div class="hero-head">
                 <div class="columns">
                     <div class="column is-three-quarters">
@@ -32,14 +33,14 @@
                 </div>
             </div>
             <div class="hero-body">
-                <p class="title">Cars.com</p>
+                <p class="title whiteText" style="color: white;">Cars.com</p>
             </div>
         </header>
 
         <!--Main body-->
         <article class="has-background-white">
             <div class="columns" style="padding:10px;">
-                <section class="column is-one-third has-background-info" id="search" style="margin-left:15px;border-radius:4px;">
+                <section class="column is-one-third box" id="search" style="margin-left:15px;border-radius:4px;">
                     <!--Search-->
                     <table>
                         <tr>
@@ -47,7 +48,7 @@
                                 <label for="make">Make: </label>
                             </td>
                             <td>
-                                <input type="text" id="make" class="input is-small">
+                                <input type="text" id="make" class="input is-small searchField">
                             </td>
                         </tr>
                         <tr>
@@ -55,7 +56,7 @@
                                 <label for="model">Model: </label>
                             </td>
                             <td>
-                                <input type="text" id="model" class="input is-small">
+                                <input type="text" id="model" class="input is-small searchField">
                             </td>
                         </tr>
                         <tr>
@@ -63,7 +64,7 @@
                                 <label for="minPrice">Mininum Price: </label>
                             </td>
                             <td>
-                                <input type="number" id="minPrice" class="input is-small">
+                                <input type="number" id="minPrice" class="input is-small searchField">
                             </td>
                         </tr>
                         <tr>
@@ -71,7 +72,7 @@
                                 <label for="maxPrice">Maximum Price: </label>
                             </td>
                             <td>
-                                <input type="number" id="maxPrice" class="input is-small">
+                                <input type="number" id="maxPrice" class="input is-small searchField">
                             </td>
                         </tr>
                         <tr>

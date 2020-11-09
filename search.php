@@ -52,7 +52,7 @@ while ($row = $query->fetch())
 {
     echo "<div>";
     echo "<a class='displayedCar' onclick='updateSession()' href='carpage.html?carIndex=".$row["carIndex"]."'>";
-    echo "<div class='box' style='background-color:lightgrey;margin-bottom:10px;'><img src='".$row["image"]."' id='image' alt='Car'>";
+    echo "<div class='box' style='margin-bottom:10px; margin-right:5px;'><img src='".$row["image"]."' id='image' alt='Car'>";
     echo "<p id='make'>Make: ".$row["make"]."</p>";
     echo "<p id='model'>Model: ".$row["model"]."</p>";
     echo "<p id='price'>Price: £".$row["price"]."</p>";
