@@ -43,7 +43,7 @@ function getGETToSend()
         url = url.substring(0, url.length - 2);
     }
 
-    if (url == "?")
+    if (url === "?")
     {
         return "";
     }
