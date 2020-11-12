@@ -77,17 +77,21 @@ function generateMakes()
     xhttp.send();
 }
 
-function generateModel()
+function generateModels()
 {
+    document.getElementById("model").disabled = false;
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200)
         {
-
+            document.getElementById("model");
         }
     }
 
-    //xhttp.open("GET", "php/availablemodels.php?", true);
+    let url = "php/availablemodels.php?make='" + document.getElementById("make").value + "'";
+    console.log(url);
+
+    xhttp.open("GET", url, true);
     xhttp.send();
 }
 

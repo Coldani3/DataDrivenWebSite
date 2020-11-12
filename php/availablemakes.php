@@ -22,7 +22,8 @@ catch (\PDOException $e)
 
 $query = $pdo->query("SELECT DISTINCT make FROM cars WHERE available = \"Y\"");
 
-echo "<select id='make'>";
+echo "<select id='make' onchange='generateModels()'>";
+echo "<option value='' disabled selected></option>";
 
 while ($make = $query->fetch()["make"])
 {
