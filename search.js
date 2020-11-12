@@ -45,7 +45,7 @@ function getGETToSend()
 
     if (maxPriceInput.length > 0)
     {
-        url += "maxPrice=" + minPriceInput + "&";
+        url += "maxPrice=" + maxPriceInput + "&";
     }
     else if (url.indexOf(url.length - 1) == "&")
     {
