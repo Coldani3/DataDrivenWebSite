@@ -16,7 +16,7 @@ function submit()
             document.getElementById("carSelect").innerHTML = this.responseText;
         }
     }
-    xhttp.open("GET", "search.php" + getGETToSend(), true);
+    xhttp.open("GET", "php/search.php" + getGETToSend(), true);
     xhttp.send();
 }
 
@@ -62,3 +62,33 @@ function setPageCount(page)
     pageCount = page;
     submit();
 }
+
+function generateMakes()
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200)
+        {
+            document.getElementById("makeSelect").innerHTML = this.response;
+        }
+    }
+
+    xhttp.open("GET", "php/availablemakes.php", true);
+    xhttp.send();
+}
+
+function generateModel()
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200)
+        {
+
+        }
+    }
+
+    //xhttp.open("GET", "php/availablemodels.php?", true);
+    xhttp.send();
+}
+
+generateMakes();

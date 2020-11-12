@@ -9,5 +9,5 @@ xhttp.onreadystatechange = function() {
         document.getElementById("mainBox").innerHTML = this.responseText;
     }
 }
-xhttp.open("GET", "carpage.php?carIndex=" + this.carIndex, true);
+xhttp.open("GET", "php/carpage.php?carIndex=" + this.carIndex, true);
 xhttp.send();
