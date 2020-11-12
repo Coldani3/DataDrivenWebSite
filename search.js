@@ -69,7 +69,7 @@ function generateMakes()
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200)
         {
-            document.getElementById("makeSelect").innerHTML = this.response;
+            document.getElementById("makeSelect").innerHTML = this.responseText;
         }
     }
 
@@ -84,7 +84,7 @@ function generateModels()
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200)
         {
-            document.getElementById("model");
+            document.getElementById("modelSelect").innerHTML = this.responseText;
         }
     }
 

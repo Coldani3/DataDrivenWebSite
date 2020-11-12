@@ -20,14 +20,18 @@ catch (\PDOException $e)
 	throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$query = $pdo->query("SELECT DISTINCT model FROM cars WHERE available = \"Y\"");
+$query = $pdo->query("SELECT DISTINCT model FROM cars WHERE available = \"Y\" AND make = \"".str_replace("'", "", $_GET["make"])."\"");
 
-echo "<h1>WORKING</h1>";
-echo "<select value='' disabled selected></select>";
+//echo $query->fetch()["model"];
 
-while ($model = $query->fetch()["model"])
+echo "<select id='model'>";
+echo "<option value='' disabled selected></option>";
+
+while ($model = $query->fetch())
 {
+    $model = $model["model"];
     echo "<option value='$model'>$model</option>";
 }
 
+echo "</select>";
 ?>
