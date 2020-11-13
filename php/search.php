@@ -71,6 +71,17 @@ $pageCount = ceil($pdo->query("SELECT COUNT(*) FROM cars WHERE make LIKE $make A
 echo "<div id='pagination' style='bottom:0;background-color:lightgrey;text-align:center;'>";
 echo "<p>Page ".($page + 1)." of ".$pageCount."</p>";
 
+if (($page - 1) >= 0)
+{
+    echo "<a onclick='setPageCount(".($page - 1).")'>&lt&lt&lt </a>";
+}
+
+//if the main for loop would not display the pagination for the first page, draw it specially
+if (($page - 3) >= 1)
+{
+    echo "[<a onclick='setPageCount(0)'>1</a>] ... ";
+}
+
 for ($i = clamp($page - 3, 0, $pageCount); $i < clamp($page + 3, 0, $pageCount); $i++)
 {
     if ($i != $page)
@@ -81,6 +92,16 @@ for ($i = clamp($page - 3, 0, $pageCount); $i < clamp($page + 3, 0, $pageCount);
     {
         echo "[<strong>".($i + 1)."</strong>]";
     }
+}
+
+if (($page + 3) <= $pageCount - 1)
+{
+    echo " ... [<a onclick='setPageCount(".($pageCount - 1).")'>$pageCount</a>]";
+}
+
+if (($page + 1) < $pageCount)
+{
+    echo "<a onclick='setPageCount(".($page + 1).")'> &gt&gt&gt</a>";
 }
 
 echo "</div>";
