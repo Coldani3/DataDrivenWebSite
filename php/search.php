@@ -43,7 +43,7 @@ $pageSize = 10;
 $offset = $pageSize * $page;
 //NOTE: When displaying to pagination, show page + 1
 
-$queryText = "SELECT * FROM cars WHERE make LIKE $make AND model LIKE $model AND price >= $minPrice AND price <= $maxPrice LIMIT $offset, $pageSize";
+$queryText = "SELECT * FROM cars WHERE make LIKE $make AND model LIKE $model AND price >= $minPrice AND price <= $maxPrice AND available = \"Y\" LIMIT $offset, $pageSize";
 $query = $pdo->query($queryText);
 
 echo "<div style='position:relative;overflow-y:auto;'>";

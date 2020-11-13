@@ -1,4 +1,5 @@
 <?php
+//For testing purposes
 $host = 'localhost';
 $db   = 'carsdatabase';
 $user = 'root';
@@ -20,18 +21,6 @@ catch (\PDOException $e)
 	throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$query = $pdo->query("SELECT * FROM cars WHERE carIndex LIKE ".$_GET["carIndex"]);
-
-$row = $query->fetch();
-
-echo "<img src='".$row["image"]."' alt='Car'>";
-echo "<p>Description: ".$row["description"]."</p>";
-echo "<p>Price: £".$row["price"]."</p>";
-//extra details
-echo "<div class='box'>";
-
-echo "</div>";
-
-echo "<div><button class='button' id='purchaseButton' onclick='purchase()'>Purchase</button></div>";
+$query = $pdo->query("UPDATE cars SET available = \"Y\"");
 
 ?>

@@ -6,7 +6,7 @@ function login()
     {
         var xhttp = new XMLHttpRequest();
         
-        xhttp.open("GET", "login.php?username=" + usernameInput.value + "&password=" /* BAD, NEVER DO THIS */ + passwordInput.value, true);
+        xhttp.open("GET", "php/login.php?username=" + usernameInput.value + "&password=" /* BAD, NEVER DO THIS */ + passwordInput.value, true);
         xhttp.send();
     }
 }
