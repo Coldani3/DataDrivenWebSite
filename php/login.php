@@ -1,20 +1,21 @@
 <?php 
-session_start();
-include("databaseinit.php"); ?>
+//session_start();
+include("databaseinit.php"); 
+?>
 <?php
+session_start();
 
-$usr = $_SESSION["username"];
-$pwd = $_SESSION["password"];
+$pwd = $_SESSION["pwd"];
+$usr = $_SESSION["usr"];
+
+echo "PWD: ".$pwd;
+echo "USR: ".$usr;
+
 $queryText = "SELECT * FROM users WHERE usr = \"$usr\" AND pwd = \"$pwd\"";
 
-try
-{
+echo $queryText;
+
 $query = $pdo->query($queryText);
-}
-catch (\PDOException $e)
-{
-    echo "$queryText";
-}
 
 if ($query)
 {
@@ -27,14 +28,16 @@ else
 
 $result = $query->fetch();
 
-$_SESSION["userID"] = $result["userID"];
+var_dump($result);
 
-if ($result["admin"] == 1)
-{
-    $_SESSION["admin"] = true;
-}
-else
-{
-    $_SESSION["admin"] = false;
-}
+//$_SESSION["userID"] = $result["userID"];
+
+// if ($result["admin"] == 1)
+// {
+//     $_SESSION["admin"] = true;
+// }
+// else
+// {
+//     $_SESSION["admin"] = false;
+// }
 ?>
