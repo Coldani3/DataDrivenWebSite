@@ -1,11 +1,20 @@
-<?php include("databaseinit.php"); ?>
-<?php
+<?php 
 session_start();
+include("databaseinit.php"); ?>
+<?php
 
-$username = $_SESSION["username"];
-$password = $_SESSION["password"];
+$usr = $_SESSION["username"];
+$pwd = $_SESSION["password"];
+$queryText = "SELECT * FROM users WHERE usr = \"$usr\" AND pwd = \"$pwd\"";
 
-$query = $pdo->query("SELECT * FROM users WHERE username = $username AND password = $password");
+try
+{
+$query = $pdo->query($queryText);
+}
+catch (\PDOException $e)
+{
+    echo "$queryText";
+}
 
 if ($query)
 {
@@ -13,7 +22,7 @@ if ($query)
 }
 else
 {
-    echo "2";
+    echo "0";
 }
 
 $result = $query->fetch();
