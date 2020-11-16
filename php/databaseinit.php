@@ -1,6 +1,4 @@
-<?php include("../databaseinit.php"); ?>
 <?php
-//For testing purposes
 $host = 'localhost';
 $db   = 'carsdatabase';
 $user = 'root';
@@ -21,8 +19,4 @@ catch (\PDOException $e)
 {     
 	throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
-
-$query = $pdo->query("UPDATE cars SET available = \"Y\"");
-echo "Complete";
-
 ?>
