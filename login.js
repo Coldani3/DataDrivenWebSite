@@ -3,9 +3,6 @@ function login()
     var usernameInput = document.getElementById("username").value;
     var passwordInput = document.getElementById("password").value;
 
-    console.log(usernameInput);
-    console.log(passwordInput);
-
     if (usernameInput.length > 0 && passwordInput.length > 0)
     {
         var xhttp = new XMLHttpRequest();
@@ -15,6 +12,7 @@ function login()
                 if (this.responseText === "1")
                 {
                     document.getElementById("loginResult").innerText = "Successful login!";
+                    sessionStorage.setItem("usr", usernameInput);
                     setTimeout(function() { window.location.href = "search.html"; }, 500);
                 }
                 else if (this.responseText === "0")

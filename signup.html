@@ -27,10 +27,18 @@
                             </tr>
                             <tr>
                                 <td><label for="passwordConfirm">Confirm Password:</label></td>
-                                <td><input type="password" id="email" class="input is-small"></td>
+                                <td><input type="password" id="passwordConfirm" class="input is-small"></td>
                             </tr>
                             <tr>
-                                <td><input type="submit" value="Sign Up" class="button"></td>
+                                <td>
+                                    <button onclick="signup()" class="button">Sign Up</button>
+                                    <!--<input type="submit" value="Sign Up" class="button">-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p id="resultText"></p>
+                                </td>
                             </tr>
                         </table>
                     </form>
@@ -38,5 +46,6 @@
             </div>
             <div class="column is-two-fifths"></div>
         </div>
+        <script src="signup.js"></script>
     </body>
 </html>
