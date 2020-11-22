@@ -3,11 +3,8 @@ function login()
     var usernameInput = document.getElementById("username").value;
     var passwordInput = document.getElementById("password").value;
 
-    sessionStorage.setItem("usr", usernameInput);
-    sessionStorage.setItem("pwd", passwordInput);
-
-    console.log(sessionStorage.getItem("usr"));
-    console.log(sessionStorage.getItem("pwd"));
+    console.log(usernameInput);
+    console.log(passwordInput);
 
     if (usernameInput.length > 0 && passwordInput.length > 0)
     {
@@ -30,12 +27,13 @@ function login()
                 }
                 else
                 {
-                    document.getElementById("loginResult").innerText = "not possible but ok: " + this.responseText;
+                    document.getElementById("loginResult").innerText = "bruh: " + this.responseText;
                 }
             }
         }
         
-        xhttp.open("GET", "php/login.php", true);
-        xhttp.send();
+        xhttp.open("POST", "php/login.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("usr=" + usernameInput+"&pwd=" + passwordInput);
     }
 }

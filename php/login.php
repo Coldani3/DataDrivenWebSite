@@ -3,17 +3,17 @@
 include("databaseinit.php"); 
 ?>
 <?php
-session_start();
+//session_start();
 
-$pwd = $_SESSION["pwd"];
-$usr = $_SESSION["usr"];
+$pwd = $_POST["pwd"];
+$usr = $_POST["usr"];
 
-echo "PWD: ".$pwd;
-echo "USR: ".$usr;
+// echo "PWD: ".$pwd;
+// echo "USR: ".$usr;
 
 $queryText = "SELECT * FROM users WHERE usr = \"$usr\" AND pwd = \"$pwd\"";
 
-echo $queryText;
+//echo $queryText;
 
 $query = $pdo->query($queryText);
 
@@ -28,7 +28,7 @@ else
 
 $result = $query->fetch();
 
-var_dump($result);
+//var_dump($result);
 
 //$_SESSION["userID"] = $result["userID"];
 
