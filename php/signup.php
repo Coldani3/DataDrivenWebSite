@@ -9,6 +9,9 @@ $query = $pdo->query($queryText);
 
 if ($query)
 {
+    $queryText = "INSERT INTO users (usr, pwd, email) VALUES (\"$usr\", \"$pwd\", \"$email\")";
+
+    $query = $pdo->query($queryText);
     echo "1";
 }
 else
@@ -16,7 +19,4 @@ else
     echo "0";
 }
 
-$queryText = "INSERT INTO users (usr, pwd, email) VALUES (\"$usr\", \"$pwd\", \"$email\")";
-
-$query = $pdo->query($queryText);
 ?>
