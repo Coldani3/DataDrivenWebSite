@@ -97,16 +97,22 @@ function generateModels()
 
 function updateUserInfo()
 {
-    if (sessionStorage.getItem("usr") != "")
+    let usr = sessionStorage.getItem("usr");
+    if (usr != "" && usr != null && usr != "null")
     {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200)
             {
-                //document.getElementById("profilePic").src = ;//TODO:;
+                console.log(this.responseText);
+                let data = JSON.parse(this.responseText);
+                document.getElementById("profilePic").src = "images/" + data.profilePic;
             }
         }
         
+        xhttp.open("POST", "php/getuserinfo.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("usr=" + usr);
     }
 }
 

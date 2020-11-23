@@ -23,8 +23,6 @@ else
 
 $result = $query->fetch();
 
-//var_dump($result);
-
 $_SESSION["userID"] = $result["userID"];
 
 if ($result["admin"] == 1)
