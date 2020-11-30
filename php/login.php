@@ -27,10 +27,10 @@ $_SESSION["userID"] = $result["userID"];
 
 if ($result["admin"] == 1)
 {
-    $_SESSION["admin"] = true;
+    $_SESSION["admin"] = "true";
 }
 else
 {
-    $_SESSION["admin"] = false;
+    $_SESSION["admin"] = "false";
 }
 ?>

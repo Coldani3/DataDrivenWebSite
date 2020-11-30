@@ -13,7 +13,7 @@ function login()
                 {
                     document.getElementById("loginResult").innerText = "Successful login!";
                     sessionStorage.setItem("usr", usernameInput);
-                    setTimeout(function() { window.location.href = "search.html"; }, 500);
+                    setTimeout(function() { window.location.href = "search.html"; }, 100);
                 }
                 else if (this.responseText === "0")
                 {
@@ -25,7 +25,7 @@ function login()
                 }
                 else
                 {
-                    document.getElementById("loginResult").innerText = "bruh: " + this.responseText;
+                    document.getElementById("loginResult").innerText = "Unexpected result: " + this.responseText;
                 }
             }
         }

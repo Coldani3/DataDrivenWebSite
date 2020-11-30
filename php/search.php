@@ -1,5 +1,15 @@
 <?php include("databaseinit.php"); ?>
 <?php
+session_start();
+
+if (isset($_SESSION["admin"]))
+{
+    $isAdmin = $_SESSION["admin"];
+}
+else
+{
+    $isAdmin = "";
+}
 
 function clamp($val, $min, $max)
 {
@@ -39,6 +49,15 @@ while ($row = $query->fetch())
     echo "<p id='colour'>Colour: ".$row["colour"]."</p>";
     echo "<p id='telephone'>Telephone: ".$row["telephone"]."</p>";
     echo "<p id='dealer'>Dealer: ".$row["dealer"]."</p>";
+
+    if ($isAdmin == "true")
+    {
+        echo "<br />";
+        echo "<div>";
+        echo "<button onclick='adminDelete()' class='button'>Delete</button>";
+        echo "</div>";
+    }
+
     echo "</div>";
     echo "</a>";
     echo "</div>";

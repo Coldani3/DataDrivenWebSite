@@ -107,6 +107,9 @@ function updateUserInfo()
                 console.log(this.responseText);
                 let data = JSON.parse(this.responseText);
                 document.getElementById("profilePic").src = "images/" + data.profilePic;
+
+                let loginElement = document.getElementById("loginSignup");
+                loginElement.innerHTML = "<div class='column is-narrow'><a onclick='logout()' style='padding-right:10px;'>Sign Out</a></div>";
             }
         }
         
@@ -114,6 +117,21 @@ function updateUserInfo()
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("usr=" + usr);
     }
+}
+
+function logout()
+{
+    sessionStorage.setItem("usr", "");
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "php/logout.php", true);
+    xhttp.send();
+    window.location.reload();
+}
+
+function adminDelete()
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "php/setunavailable.php", true);
 }
 
 updateUserInfo();
