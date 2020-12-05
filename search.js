@@ -27,6 +27,8 @@ function getGETToSend()
     let modelInput = document.getElementById("model").value;
     let minPriceInput = document.getElementById("minPrice").value;
     let maxPriceInput = document.getElementById("maxPrice").value;
+    let regionInput = document.getElementById("regionSelect").value;
+    let townInput = document.getElementById("townSelect").value;
 
     if (makeInput.length > 0)
     {
@@ -46,6 +48,16 @@ function getGETToSend()
     if (maxPriceInput.length > 0)
     {
         url += "maxPrice=" + maxPriceInput + "&";
+    }
+    
+    if (regionInput.length > 0)
+    {
+        url += "region=" + regionInput + "&";
+    }
+
+    if (townInput.length > 0)
+    {
+        url += "town=" + townInput + "&";
     }
     else if (url.indexOf(url.length - 1) == "&")
     {
@@ -77,6 +89,20 @@ function generateMakes()
     xhttp.send();
 }
 
+function generateTowns()
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200)
+        {
+            document.getElementById("town").innerHTML = this.responseText;
+        }
+    }
+
+    xhttp.open("GET", "php/availabletowns.php", true);
+    xhttp.send();
+}
+
 function generateModels()
 {
     document.getElementById("model").disabled = false;
@@ -89,9 +115,22 @@ function generateModels()
     }
 
     let url = "php/availablemodels.php?make='" + document.getElementById("make").value + "'";
-    console.log(url);
 
     xhttp.open("GET", url, true);
+    xhttp.send();
+}
+
+function generateRegions()
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200)
+        {
+            document.getElementById("region").innerHTML = this.responseText;
+        }
+    }
+
+    xhttp.open("GET", "php/availableregions.php", true);
     xhttp.send();
 }
 
@@ -128,11 +167,14 @@ function logout()
     window.location.reload();
 }
 
-function adminDelete()
+function adminDelete(carIndex)
 {
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", "php/setunavailable.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("carIndex=" + carIndex);
 }
 
 updateUserInfo();
 generateMakes();
+generateRegions();

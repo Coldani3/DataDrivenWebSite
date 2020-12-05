@@ -28,12 +28,18 @@ else $minPrice = $_GET['minPrice'];
 if (!isset($_GET['maxPrice']) || $_GET['maxPrice'] == "") $maxPrice = 9999999;
 else $maxPrice = $_GET['maxPrice'];
 
+if (!isset($_GET['region']) || $_GET['region'] == "") $region = "\"%\"";
+else $region = "\"".$_GET['region']."\"";
+
+if (!isset($_GET['town']) || $_GET['town'] == "") $town = "\"%\"";
+else $town = "\"".$_GET['town']."\"";
+
 $page = $_GET["page"];
 $pageSize = 10;
 $offset = $pageSize * $page;
 //NOTE: When displaying to pagination, show page + 1
 
-$queryText = "SELECT * FROM cars WHERE make LIKE $make AND model LIKE $model AND price >= $minPrice AND price <= $maxPrice AND available = \"Y\" LIMIT $offset, $pageSize";
+$queryText = "SELECT * FROM cars WHERE make LIKE $make AND model LIKE $model AND price >= $minPrice AND price <= $maxPrice AND region LIKE $region AND town LIKE $town AND available = \"Y\" LIMIT $offset, $pageSize";
 $query = $pdo->query($queryText);
 
 echo "<div style='position:relative;overflow-y:auto;'>";
@@ -42,19 +48,19 @@ while ($row = $query->fetch())
     echo "<div>";
     echo "<a class='displayedCar' onclick='updateSession()' href='carpage.html?carIndex=".$row["carIndex"]."'>";
     echo "<div class='box' style='margin-bottom:10px; margin-right:5px;'><img src='".$row["image"]."' id='image' alt='Car'>";
-    echo "<p id='make'>Make: ".$row["make"]."</p>";
-    echo "<p id='model'>Model: ".$row["model"]."</p>";
-    echo "<p id='price'>Price: £".$row["price"]."</p>";
-    echo "<p id='reg'>Registration: ".$row["Reg"]."</p>";
-    echo "<p id='colour'>Colour: ".$row["colour"]."</p>";
-    echo "<p id='telephone'>Telephone: ".$row["telephone"]."</p>";
-    echo "<p id='dealer'>Dealer: ".$row["dealer"]."</p>";
+    echo "<p id='make'><strong>Make</strong>: ".$row["make"]."</p>";
+    echo "<p id='model'><strong>Model</strong>: ".$row["model"]."</p>";
+    echo "<p id='price'><strong>Price</strong>: £".$row["price"]."</p>";
+    echo "<p id='reg'><strong>Registration</strong>: ".$row["Reg"]."</p>";
+    echo "<p id='colour'><strong>Colour</strong>: ".$row["colour"]."</p>";
+    echo "<p id='telephone'><strong>Telephone</strong>: ".$row["telephone"]."</p>";
+    echo "<p id='dealer'><strong>Dealer</strong>: ".$row["dealer"]."</p>";
 
     if ($isAdmin == "true")
     {
         echo "<br />";
         echo "<div>";
-        echo "<button onclick='adminDelete()' class='button'>Delete</button>";
+        echo "<button onclick='adminDelete(".$row["carIndex"].")' class='button'>Delete</button>";
         echo "</div>";
     }
 
