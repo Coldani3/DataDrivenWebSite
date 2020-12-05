@@ -178,3 +178,4 @@ function adminDelete(carIndex)
 updateUserInfo();
 generateMakes();
 generateRegions();
+generateTowns();
