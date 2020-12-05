@@ -35,7 +35,7 @@ if (!isset($_GET['town']) || $_GET['town'] == "") $town = "\"%\"";
 else $town = "\"".$_GET['town']."\"";
 
 $page = $_GET["page"];
-$pageSize = 10;
+$pageSize = 8;
 $offset = $pageSize * $page;
 //NOTE: When displaying to pagination, show page + 1
 
