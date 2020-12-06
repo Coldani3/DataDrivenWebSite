@@ -4,7 +4,7 @@ session_start();
 if (isset($_SESSION["admin"])) $isAdmin = $_SESSION["admin"];
 else $isAdmin = false;
 
-if ($isAdmin == "true" && $_POST["carIndex"] > 1000)
+if ($isAdmin == "true")
 {
     $carIndex = $_POST["carIndex"];
     $image = $_POST["image"];

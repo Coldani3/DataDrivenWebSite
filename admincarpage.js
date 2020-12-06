@@ -12,10 +12,25 @@ xhttp.onreadystatechange = function() {
 xhttp.open("GET", "php/admincarpage.php?carIndex=" + carIndex, true);
 xhttp.send();
 
-function carDelete()
+function carUnavailable()
 {
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", "php/setunavailable.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("carIndex=" + carIndex);
+}
+
+function carDelete()
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200)
+        {
+            //window.location.href = "search.html";
+            console.log(this.responseText);
+        }
+    }
+    xhttp.open("POST", "php/deletecar.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("carIndex=" + carIndex);
 }

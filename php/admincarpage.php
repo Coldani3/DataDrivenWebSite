@@ -30,8 +30,9 @@ if ($isAdmin)
 
     //echo "<div><button class='button' id='purchaseButton' onclick='purchase()' style='margin-right:5px;'>Purchase</button>";
 
-    echo "<button onclick='carDelete()' class='button' style='margin-right:5px;'>Delete</button>";
     echo "<button onclick='updateValues()' class='button'>Update</button>";
+    echo "<button onclick='carUnavailable()' class='button' style='margin-right:5px;'>Mark Unavailable</button>";
+    echo "<button onclick='carDelete()' class='button' style='margin-right:5px;'>Delete</button>";
     echo "</div>";
 }
 else
