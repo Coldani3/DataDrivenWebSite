@@ -25,10 +25,12 @@ function getGETToSend()
     let url = "?";
     let makeInput = document.getElementById("make").value;
     let modelInput = document.getElementById("model").value;
+    let colourInput = document.getElementById("colourSelect").value;
     let minPriceInput = document.getElementById("minPrice").value;
     let maxPriceInput = document.getElementById("maxPrice").value;
     let regionInput = document.getElementById("regionSelect").value;
     let townInput = document.getElementById("townSelect").value;
+    let dealerInput = document.getElementById("dealerSelect").value;
 
     if (makeInput.length > 0)
     {
@@ -49,6 +51,11 @@ function getGETToSend()
     {
         url += "maxPrice=" + maxPriceInput + "&";
     }
+
+    if (colourInput.length > 0)
+    {
+        url += "colour=" + colourInput + "&";
+    }
     
     if (regionInput.length > 0)
     {
@@ -58,6 +65,11 @@ function getGETToSend()
     if (townInput.length > 0)
     {
         url += "town=" + townInput + "&";
+    }
+
+    if (dealerInput.length > 0)
+    {
+        url += "dealer=" + dealerInput + "&";
     }
     else if (url.indexOf(url.length - 1) == "&")
     {
@@ -134,6 +146,34 @@ function generateRegions()
     xhttp.send();
 }
 
+function generateColours()
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200)
+        {
+            document.getElementById("colour").innerHTML = this.responseText;
+        }
+    }
+
+    xhttp.open("GET", "php/availablecolours.php", true);
+    xhttp.send();
+}
+
+function generateDealers()
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200)
+        {
+            document.getElementById("dealer").innerHTML = this.responseText;
+        }
+    }
+
+    xhttp.open("GET", "php/availabledealers.php", true);
+    xhttp.send();
+}
+
 function updateUserInfo()
 {
     let usr = sessionStorage.getItem("usr");
@@ -179,3 +219,5 @@ updateUserInfo();
 generateMakes();
 generateRegions();
 generateTowns();
+generateColours();
+generateDealers();

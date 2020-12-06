@@ -28,18 +28,24 @@ else $minPrice = $_GET['minPrice'];
 if (!isset($_GET['maxPrice']) || $_GET['maxPrice'] == "") $maxPrice = 9999999;
 else $maxPrice = $_GET['maxPrice'];
 
+if (!isset($_GET['colour']) || $_GET['colour'] == "") $colour = "\"%\"";
+else $colour = "\"".$_GET['colour']."\"";
+
 if (!isset($_GET['region']) || $_GET['region'] == "") $region = "\"%\"";
 else $region = "\"".$_GET['region']."\"";
 
 if (!isset($_GET['town']) || $_GET['town'] == "") $town = "\"%\"";
 else $town = "\"".$_GET['town']."\"";
 
+if (!isset($_GET['dealer']) || $_GET['dealer'] == "") $dealer = "\"%\"";
+else $colour = "\"".$_GET['colour']."\"";
+
 $page = $_GET["page"];
 $pageSize = 8;
 $offset = $pageSize * $page;
 //NOTE: When displaying to pagination, show page + 1
 
-$queryText = "SELECT * FROM cars WHERE make LIKE $make AND model LIKE $model AND price >= $minPrice AND price <= $maxPrice AND region LIKE $region AND town LIKE $town AND available = \"Y\" LIMIT $offset, $pageSize";
+$queryText = "SELECT * FROM cars WHERE make LIKE $make AND model LIKE $model AND price >= $minPrice AND price <= $maxPrice AND colour LIKE $colour AND region LIKE $region AND town LIKE $town AND dealer LIKE $dealer AND available = \"Y\" LIMIT $offset, $pageSize";
 $query = $pdo->query($queryText);
 
 echo "<div style='position:relative;overflow-y:auto;'>";
@@ -72,7 +78,7 @@ echo "</div>";
 
 //GENERATE PAGINATION
 
-$pageCount = ceil($pdo->query("SELECT COUNT(*) FROM cars WHERE make LIKE $make AND model LIKE $model AND price >= $minPrice AND price <= $maxPrice")->fetchColumn() / $pageSize);
+$pageCount = ceil($pdo->query("SELECT COUNT(*) FROM cars WHERE make LIKE $make AND model LIKE $model AND price >= $minPrice AND price <= $maxPrice AND colour LIKE $colour AND region LIKE $region AND town LIKE $town AND dealer LIKE $dealer")->fetchColumn() / $pageSize);
 echo "<div id='pagination' style='bottom:0;background-color:lightgrey;text-align:center;'>";
 echo "<p>Page ".($page + 1)." of ".$pageCount."</p>";
 
