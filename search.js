@@ -28,6 +28,8 @@ function getGETToSend()
     let colourInput = document.getElementById("colourSelect").value;
     let minPriceInput = document.getElementById("minPrice").value;
     let maxPriceInput = document.getElementById("maxPrice").value;
+    let minMileageInput = document.getElementById("minMileage").value;
+    let maxMileageInput = document.getElementById("maxMileage").value;
     let regionInput = document.getElementById("regionSelect").value;
     let townInput = document.getElementById("townSelect").value;
     let dealerInput = document.getElementById("dealerSelect").value;
@@ -50,6 +52,16 @@ function getGETToSend()
     if (maxPriceInput.length > 0)
     {
         url += "maxPrice=" + maxPriceInput + "&";
+    }
+
+    if (minMileageInput.length > 0)
+    {
+        url += "minMileage=" + minMileageInput + "&";
+    }
+
+    if (maxMileageInput.length > 0)
+    {
+        url += "maxMileage=" + maxMileageInput + "&";
     }
 
     if (colourInput.length > 0)
