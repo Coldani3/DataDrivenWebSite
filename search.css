@@ -1,6 +1,7 @@
 .searchField {
     margin-bottom: 5px;
     margin-left: 3px;
+    width: 100%;
 }
 
 label {

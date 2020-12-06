@@ -2,8 +2,8 @@
 <?php
 $query = $pdo->query("SELECT DISTINCT region FROM cars WHERE available = \"Y\"");
 
-echo "<select id='regionSelect' style='width: 100%'>";
-echo "<option value='' disabled selected></option>";
+echo "<select id='regionSelect' style='width: 100%' class='searchField'>";
+echo "<option value='' selected></option>";
 
 while ($region = $query->fetch())
 {

@@ -5,8 +5,8 @@ $query = $pdo->query("SELECT DISTINCT model FROM cars WHERE available = \"Y\" AN
 
 //echo $query->fetch()["model"];
 
-echo "<select id='model' style='width:100%'>";
-echo "<option value='' disabled selected></option>";
+echo "<select id='model' style='width:100%' class='searchField'>";
+echo "<option value='' selected></option>";
 
 while ($model = $query->fetch())
 {

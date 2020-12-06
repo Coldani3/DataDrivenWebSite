@@ -3,8 +3,8 @@
 
 $query = $pdo->query("SELECT DISTINCT dealer FROM cars WHERE available = \"Y\"");
 
-echo "<select id='dealerSelect' style='width:100%'>";
-echo "<option value='' disabled selected></option>";
+echo "<select id='dealerSelect' style='width:100%' class='searchField'>";
+echo "<option value='' selected></option>";
 
 while ($dealer = $query->fetch())
 {

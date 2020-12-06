@@ -14,13 +14,22 @@ xhttp.send();
 
 function purchase()
 {
+    window.location.href = "purchasepage.html";
+    // let xhttp = new XMLHttpRequest();
+    // xhttp.onreadystatechange = function() {
+    //     if (this.readyState == 4 && this.status == 200)
+    //     {
+    //         window.location.href = "search.html";
+    //     }
+    // }
+    // xhttp.open("POST", "php/setunavailable.php", true);
+    // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // xhttp.send("carIndex=" + carIndex);
+}
+
+function carDelete()
+{
     let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200)
-        {
-            window.location.href = "search.html";
-        }
-    }
     xhttp.open("POST", "php/setunavailable.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("carIndex=" + carIndex);

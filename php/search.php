@@ -58,7 +58,14 @@ echo "<div style='position:relative;overflow-y:auto;'>";
 while ($row = $query->fetch())
 {
     echo "<div>";
-    echo "<a class='displayedCar' onclick='updateSession()' href='carpage.html?carIndex=".$row["carIndex"]."'>";
+    if ($isAdmin == "true")
+    {
+        echo "<a class='displayedCar' onclick='updateSession()' href='admincarpage.html?carIndex=".$row["carIndex"]."'>";
+    }
+    else
+    {
+        echo "<a class='displayedCar' onclick='updateSession()' href='carpage.html?carIndex=".$row["carIndex"]."'>";
+    }
     echo "<div class='box' style='margin-bottom:10px; margin-right:5px;'><img src='".$row["image"]."' id='image' alt='Car'>";
     echo "<p id='make'><strong>Make</strong>: ".$row["make"]."</p>";
     echo "<p id='model'><strong>Model</strong>: ".$row["model"]."</p>";
