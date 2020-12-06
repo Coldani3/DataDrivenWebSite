@@ -14,11 +14,38 @@
         <div style="padding:10px;background-color: lightgray;position:absolute;top:0;left:0;height:100%;width:100%;">
             <div class="columns">
                 <div class="column is-one-third"></div>
-                <div class="column box is-one-third">
+                <div id="mainBox" class="column box is-one-third">
                     
+                    <label for="firstname">First Name: </label>
+                    <input type="text" onchange="checkAllFilled()" class="input" id="firstname">
+                    <br />
+                    <label for="lastname">Last Name: </label>
+                    <input type="text" onchange="checkAllFilled()" class="input" id="lastname">
+                    <br />
+                    <label for="address">Address: </label>
+                    <input type="text" onchange="checkAllFilled()" class="input" id="address">
+                    <br />
+                    <label for="email">Email: </label>
+                    <input type="text" onchange="checkAllFilled()" class="input" id="email">
+                    <br />
+                    <br />
+
+                    <div class="box">
+                        <form>
+                            <input type="radio" onchange="checkAllFilled()" name="payment" id="credit" value="credit">
+                            <label for="credit">Credit Card</label>
+                            <input type="radio" onchange="checkAllFilled()" name="payment" id="debit" value="debit">
+                            <label for="debit">Debit Card</label>
+                        </form>
+                    </div>
+
+                    
+                    <button id="purchaseButton" onclick="purchase()" class="button" disabled>Purchase</button>
                 </div>
                 <div class="column is-one-third"></div>
             </div>
         </div>
+
+        <script src="purchasepage.js"></script>
     </body>
 </html>

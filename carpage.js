@@ -14,7 +14,7 @@ xhttp.send();
 
 function purchase()
 {
-    window.location.href = "purchasepage.html";
+    window.location.href = "purchasepage.html?carIndex=" + carIndex;
     // let xhttp = new XMLHttpRequest();
     // xhttp.onreadystatechange = function() {
     //     if (this.readyState == 4 && this.status == 200)
