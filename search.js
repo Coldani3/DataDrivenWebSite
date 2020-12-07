@@ -221,6 +221,14 @@ function logout()
 function adminDelete(carIndex)
 {
     let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "php/deletecar.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("carIndex=" + carIndex);
+}
+
+function markUnavailable(carIndex)
+{
+    let xhttp = new XMLHttpRequest();
     xhttp.open("POST", "php/setunavailable.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("carIndex=" + carIndex);

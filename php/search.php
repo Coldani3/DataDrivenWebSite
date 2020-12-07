@@ -79,6 +79,7 @@ while ($row = $query->fetch())
     {
         echo "<br />";
         echo "<div>";
+        echo "<button onclick='markUnavailable(".$row["carIndex"].")' class='button style='padding-right:5px;'>Mark Unavailable</button>";
         echo "<button onclick='adminDelete(".$row["carIndex"].")' class='button'>Delete</button>";
         echo "</div>";
     }
