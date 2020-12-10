@@ -23,8 +23,7 @@ function add()
     xhttp.open("POST", "php/addcar.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     console.log(carIndex);
-    xhttp.send("carIndex=" + carIndex + 
-                "&image=" + image + 
+    xhttp.send("image=" + image + 
                 "&description=" + description + 
                 "&price=" + price + 
                 "&make=" + make + 
@@ -37,4 +36,14 @@ function add()
                 "&region=" + region +
                 "&telephone=" + telephone);
 }
+
+console.log("LOADLOAD");
+let xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+    {
+        document.getElementById("mainBox").innerHTML = this.responseText;
+    }
 }
+xhttp.open("GET", "php/addcarpage.php");
+xhttp.send();

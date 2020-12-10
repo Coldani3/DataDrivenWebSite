@@ -6,7 +6,7 @@ else $isAdmin = false;
 
 if ($isAdmin == "true")
 {
-    $carIndex = $_POST["carIndex"];
+    //$carIndex = $_POST["carIndex"];
     $image = $_POST["image"];
     $description = $_POST["description"];
     $price = $_POST["price"];
@@ -20,7 +20,7 @@ if ($isAdmin == "true")
     $region = $_POST["region"];
     $telephone = $_POST["telephone"];
 
-    $queryText = "INSERT INTO cars (make, model, Reg, colour, miles, price, dealer, town, telephone, description, carIndex, region, image, Available) VALUES (\"$make\", \"$model\", \"$reg\", \"$colour\", $miles, $price, \"$dealer\", \"$town\", \"$telephone\", \"$description\", \"$carIndex\", \"$region\", \"$image\", \"Y\"";
+    $queryText = "INSERT INTO cars (make, model, Reg, colour, miles, price, dealer, town, telephone, description, region, image, Available) VALUES (\"$make\", \"$model\", \"$reg\", \"$colour\", $miles, $price, \"$dealer\", \"$town\", \"$telephone\", \"$description\", \"$region\", \"$image\", \"Y\"";
 
     $pdo->query($queryText);
 }
