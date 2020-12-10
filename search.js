@@ -234,6 +234,14 @@ function markUnavailable(carIndex)
     xhttp.send("carIndex=" + carIndex);
 }
 
+function addCar(carIndex)
+{
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "php/addcar.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("carIndex=" + carIndex);   
+}
+
 updateUserInfo();
 generateMakes();
 generateRegions();

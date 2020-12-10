@@ -28,7 +28,7 @@ else $minPrice = $_GET['minPrice'];
 if (!isset($_GET['maxPrice']) || $_GET['maxPrice'] == "") $maxPrice = 9999999;
 else $maxPrice = $_GET['maxPrice'];
 
-if (!isset($_GET['minMileage']) || $_GET['minMileage' == ""]) $minMileage = 0;
+if (!isset($_GET['minMileage']) || $_GET['minMileage'] == "") $minMileage = 0;
 else $minMileage = $_GET['minMileage'];
 
 if (!isset($_GET['maxMileage']) || $_GET['maxMileage'] == "") $maxMileage = 9999999;
@@ -60,11 +60,11 @@ while ($row = $query->fetch())
     echo "<div>";
     if ($isAdmin == "true")
     {
-        echo "<a class='displayedCar' onclick='updateSession()' href='admincarpage.html?carIndex=".$row["carIndex"]."'>";
+        echo "<a onclick='updateSession()' href='admincarpage.html?carIndex=".$row["carIndex"]."'>";
     }
     else
     {
-        echo "<a class='displayedCar' onclick='updateSession()' href='carpage.html?carIndex=".$row["carIndex"]."'>";
+        echo "<a onclick='updateSession()' href='carpage.html?carIndex=".$row["carIndex"]."'>";
     }
     echo "<div class='box' style='margin-bottom:10px; margin-right:5px;'><img src='".$row["image"]."' id='image' alt='Car'>";
     echo "<p id='make'><strong>Make</strong>: ".$row["make"]."</p>";
@@ -74,12 +74,12 @@ while ($row = $query->fetch())
     echo "<p id='colour'><strong>Colour</strong>: ".$row["colour"]."</p>";
     echo "<p id='telephone'><strong>Telephone</strong>: ".$row["telephone"]."</p>";
     echo "<p id='dealer'><strong>Dealer</strong>: ".$row["dealer"]."</p>";
-
+    
     if ($isAdmin == "true")
     {
         echo "<br />";
         echo "<div>";
-        echo "<button onclick='markUnavailable(".$row["carIndex"].")' class='button style='padding-right:5px;'>Mark Unavailable</button>";
+        echo "<button onclick='markUnavailable(".$row["carIndex"].")' class='button style='margin-right:5px;'>Mark Unavailable</button>";
         echo "<button onclick='adminDelete(".$row["carIndex"].")' class='button'>Delete</button>";
         echo "</div>";
     }
@@ -91,6 +91,8 @@ while ($row = $query->fetch())
 echo "</div>";
 
 //GENERATE PAGINATION
+
+echo "<a href='addcarpage.html'><button onclick='addCar()'>Add Car</button></a>";
 
 $pageCount = ceil($pdo->query("SELECT COUNT(*) FROM cars WHERE make LIKE $make AND model LIKE $model AND price >= $minPrice AND price <= $maxPrice AND miles >= $minMileage AND miles <= $maxMileage AND colour LIKE $colour AND region LIKE $region AND town LIKE $town AND dealer LIKE $dealer")->fetchColumn() / $pageSize);
 echo "<div id='pagination' style='bottom:0;background-color:lightgrey;text-align:center;'>";

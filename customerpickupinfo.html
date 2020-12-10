@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <link rel="stylesheet" href="colours.css">
+    </head>
+    <body>
+        <div style="padding:10px;background-color: lightgray;position:absolute;top:0;left:0;height:100%;width:100%;">
+            <div class="columns">
+                <div class="column is-one-third"></div>
+                <div id="mainBox" class="box column is-one-third" style="margin-top:2em;">
+                    <form action="search.html">
+                        <p>Your car will be available to pick up on <span id="date"></span></p>
+                        <br />
+                        <p>You will need to bring your Car Insurance Documents and Driving License, as well as proof you purchased the car</p>
+                        <br />
+                        <p>If you don't have Car Insurance, then perhaps consider one from the following: </p>
+                        <div class="box">
+                            <a href="https://www.confused.com/car-insurance" style="margin-right:1em;">Confused.com</a>
+                            <a href="https://www.aviva.co.uk/insurance/motor/car-insurance/" style="margin-right:1em;">Aviva</a>
+                            <a href="https://www.esure.com/car-insurance">ESure</a>
+                        </div>
+                        <input type="submit" class="button" value="Done">
+                    </form>
+                </div>
+                <div class="column is-one-third"></div>
+            </div>
+        </div>
+        <script src="customerpickupinfo.js"></script>
+    </body>
+</html>

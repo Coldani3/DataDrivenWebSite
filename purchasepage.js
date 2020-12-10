@@ -7,7 +7,7 @@ function purchase()
     xhttp.open("POST", "php/setunavailable.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("carIndex=" + carIndex);
-    window.location.href = "search.html";
+    window.location.href = "customerpickupinfo.html";
 }
 
 function checkAllFilled()

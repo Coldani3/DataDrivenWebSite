@@ -1,0 +1,3 @@
+UPDATE cars SET image="images/fiatuno.jpg" WHERE make="Fiat"
+
+INSERT INTO `cars` (`make`, `model`, `Reg`, `colour`, `miles`, `price`, `dealer`, `town`, `telephone`, `description`, `carIndex`, `region`, `image`, `available`) VALUES ('Daewoo', 'Subina', 'Y', 'gold', '42000', '4200000', 'Cars R Us', 'Peterborough', '08000 1234567', 'TESTCARTESTCAR', '1002', 'SW', 'images/daewoonubira.jpg', 'Y');

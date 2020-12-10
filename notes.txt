@@ -1,4 +1,2 @@
-TODO:
-BMW images
 
 BUGS: with colour search (possibly more) the pagination doesn't adjust [FIXED, remember that you use a second query that isn't automatically updated when the first changes]
