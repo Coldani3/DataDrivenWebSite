@@ -44,7 +44,7 @@ if (!isset($_GET['town']) || $_GET['town'] == "") $town = "\"%\"";
 else $town = "\"".$_GET['town']."\"";
 
 if (!isset($_GET['dealer']) || $_GET['dealer'] == "") $dealer = "\"%\"";
-else $colour = "\"".$_GET['colour']."\"";
+else $dealer = "\"".$_GET['dealer']."\"";
 
 $page = $_GET["page"];
 $pageSize = 8;
@@ -91,8 +91,10 @@ while ($row = $query->fetch())
 echo "</div>";
 
 //GENERATE PAGINATION
-
-echo "<a href='addcarpage.html'><button onclick='addCar()'>Add Car</button></a>";
+if ($isAdmin == "true")
+{
+    echo "<a href='addcarpage.html'><button class='button' onclick='addCar()'>Add Car</button></a>";
+}
 
 $pageCount = ceil($pdo->query("SELECT COUNT(*) FROM cars WHERE make LIKE $make AND model LIKE $model AND price >= $minPrice AND price <= $maxPrice AND miles >= $minMileage AND miles <= $maxMileage AND colour LIKE $colour AND region LIKE $region AND town LIKE $town AND dealer LIKE $dealer")->fetchColumn() / $pageSize);
 echo "<div id='pagination' style='bottom:0;background-color:lightgrey;text-align:center;'>";

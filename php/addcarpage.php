@@ -6,10 +6,6 @@ else $isAdmin = false;
 
 if ($isAdmin == "true")
 {
-    // $query = $pdo->query("SELECT * FROM cars WHERE carIndex LIKE ".$_GET["carIndex"]);
-
-    // $row = $query->fetch();
-
     echo "<p><strong>Car Image URL</strong>: <input id='image' type='text'></p>";
     echo "<p><strong>Description</strong>: <input id='description' type='text'></p>";
     echo "<p><strong>Price</strong>: £<input id='price' type='text'></p>";
